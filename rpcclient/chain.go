@@ -9,10 +9,9 @@ import (
 	"bytes"
 	"encoding/hex"
 	"encoding/json"
-
-	"github.com/naomasabit/btcd/btcjson"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/wire"
+	"github.com/naomasabit/btcd/btcjson"
 )
 
 // FutureGetBestBlockHashResult is a future promise to deliver the result of a
@@ -97,7 +96,7 @@ func (c *Client) GetBlockAsync(blockHash *chainhash.Hash) FutureGetBlockResult {
 		hash = blockHash.String()
 	}
 
-	cmd := btcjson.NewGetBlockCmd(hash, btcjson.Bool(false), nil)
+	cmd := btcjson.NewGetBlockCmd(hash, btcjson.Bool(false), 0)
 	return c.sendCmd(cmd)
 }
 
@@ -141,7 +140,7 @@ func (c *Client) GetBlockVerboseAsync(blockHash *chainhash.Hash) FutureGetBlockV
 		hash = blockHash.String()
 	}
 
-	cmd := btcjson.NewGetBlockCmd(hash, btcjson.Bool(true), nil)
+	cmd := btcjson.NewGetBlockCmd(hash, btcjson.Bool(true), 0)
 	return c.sendCmd(cmd)
 }
 
