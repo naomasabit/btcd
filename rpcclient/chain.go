@@ -165,7 +165,7 @@ func (c *Client) GetBlockVerboseTxAsync(blockHash *chainhash.Hash) FutureGetBloc
 		hash = blockHash.String()
 	}
 
-	cmd := btcjson.NewGetBlockCmd(hash, btcjson.Bool(true), btcjson.Bool(true))
+	cmd := btcjson.NewGetBlockCmd(hash, btcjson.Bool(true), 2)
 	return c.sendCmd(cmd)
 }
 
